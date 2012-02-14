@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <noscript>
+    <meta http-equiv="refresh" content="0; url=noscript.html" />
+  </noscript>
+  <script type="text/javascript" src="jquery/jquery.js"></script>
+  <script type="text/javascript" src="jquery/jquery.cookie.js"></script>
+  <script type="text/javascript" src="jquery/json2.js"></script>
+  <script type="text/javascript" src="jquery/date.js"></script>
+  <script type="text/javascript" src="jquery/jquery.datePicker.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+  <script type="text/javascript" charset="utf-8">
+    Date.format = 'mm/dd/yyyy';
+    $(function() {
+      $('.date-pick').datePicker({startDate:'01/01/2010'}).val(new Date().asString()).trigger('change');
+    });
+  </script>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link href="http://fonts.googleapis.com/css?family=Junge"
+	rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Arimo"
+	  rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="jquery/datePicker.css" />
+  <title>
+    Money management
+  </title>
+</head>
+<body>
+  <div id="top"></div>
+  <div id="content">
+    <div id="main">
+      <h1 id="debtformtitle" style="font-family: 'Junge'">Enter a debt</h1>
+      <form id="debtform" method="post" action="cgi-bin/valid.cgi">
+	<table>
+	  <tr>
+	    <th>Date</th>
+	    <td>
+	      <input name="date" id="date" size="7" class="date-pick" />
+	    </td>
+	  </tr>
+	  <tr>
+	    <th>Category</th>
+	    <td><select id="category"></select></td>
+	  </tr>
+	  <tr>
+	    <th>Owed by</th>
+	    <td id="people"></td>
+	  </tr>
+	  <tr>
+	    <th>Amount</th>
+	    <td>$<input type="text" id="price" size="5" /></td>
+	  </tr>
+	<tr>
+	  <td colspan="2">
+	    <input type="radio" id="split" value="split" checked="checked" />
+	    <label for="split">Split cost between all people</label><br />
+	    <input type="radio" id="each" value="each" />
+	    <label for="each">All people owe entire cost</label>
+	  </td>
+	</tr>
+	  <tr>
+	    <td colspan="2"><input type="submit" value="Submit" />
+	      <span id="message"></span></td>
+	  </tr>
+	</table>
+      </form>
+    </div>
+    <div id="debts">
+      <h1 style="font-family: Junge">Your debts</h1>
+      <p><a href="#" onclick="toggle('summarylist'); return false;">Summary</a></p>
+      <ul id="summarylist">
+      </ul>
+      <p><a href="#" onclick="toggle('debttable'); return false;">Details</a></p>
+      <table id="debttable">
+	<tr>
+	  <th>Date</th>
+	  <th>To</th>
+	  <th>For</th>
+	  <th>Amount</th>
+	</tr>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

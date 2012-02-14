@@ -1,0 +1,96 @@
+
+
+th {
+    font-family: Helvetica, Arial, sans;
+    text-align: left;
+}
+
+#debtform th, #debtform td {
+    height: 50px;
+    vertical-align: top;
+}
+
+body,html {
+    margin: 0px;
+    padding: 0px;
+}
+
+#content {
+    margin: 5px;
+    color: black;
+    position: relative;
+}
+
+#content a {
+    color: black;
+}
+
+#content div {
+    padding: 5px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    position: absolute;
+
+}
+
+#main {
+    width: 400px;
+    background-color: pink;
+    top: 5px;
+    left: 5px;
+}
+
+#debts {
+    width: 400px;
+    top: 5px;
+    left: 430px;
+    min-height: 400px;
+    background-color: #99ff55;
+    
+}
+
+#debts table {
+    border-spacing: 5px;
+    border: 1px solid #333;
+    width: 100%;
+}
+
+#debts td, #debts th {
+    border: 1px dotted #666;
+}
+
+#debts th {
+    border-bottom: 2px solid #333;
+}
+
+#debts td {
+    font-family: 'Arimo', sans-serif;
+}
+
+#debts tr.odd:hover, #debts tr.even:hover {
+    background-color: white;
+}
+
+#top {
+    width: 100%;
+    background-color: black;
+    height: 25px;
+}
+
+#top p, #top a {
+    color: white;
+    font-size: 10pt;
+    text-align: right;
+    padding: 5px;
+    margin: 0px;
+    
+}
+
+#top a {
+    background-color: red;
+}
+
+#message {
+    color: red;
+}
