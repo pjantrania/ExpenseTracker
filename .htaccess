@@ -1,0 +1,4 @@
+<Files settings.conf>
+       order allow,deny
+       deny from all
+</Files>
