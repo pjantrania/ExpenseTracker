@@ -50,6 +50,7 @@ $(document).ready( function() {
 	$.getJSON("cgi-bin/populate.cgi", {item: 'people', sid: sid},
 		  function(result) {
 		    var peeps = result.people;
+		    window.people = peeps;
 		    for ( var i = 0; i < peeps.length; i++ ) {
 		      
 		      box.append($(document.createElement("input"))
@@ -142,7 +143,7 @@ function updateSummary() {
   $("#summarylist").html("");
   $.getJSON("cgi-bin/data.cgi",{action: 'summarize', sid: sid},
 	    function(result) {
-	      
+	      alert(window.people[0]);
 	      for ( var i = 0; i < result.d.length; i++ ) {
 		var item = result.d[i];
 		var price = parseFloat(item.amount);
@@ -160,7 +161,7 @@ function updateSummary() {
 		$("#summarylist").append(litext);
 	      }
 	      /*
-	      for ( var i = 0; i < result.d.length; i++ ) {
+		for ( var i = 0; i < result.d.length; i++ ) {
 		var row = result.d[i];		    
 		var rcls = i % 2 == 0 ? "even" : "odd";
 		var rowtext = "<tr class=\""+rcls+"\">"+

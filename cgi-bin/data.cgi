@@ -104,6 +104,27 @@ if ( $action eq "" ) {
     $json .= "]}";
     print $json;
 
+} elsif ( $action eq "addcredit" ) {
+    my $sid = param() ? param('sid') : '';
+    my $session = new CGI::Session(undef, $sid, {Directory=>'/tmp'});
+    my $uid = session->param("id");
+    my $data = param() ? param('data') : '';
+    if ( $data ne '' ) {
+	my $credit = decode_json($data);
+	my $from   = $debt->{fromid};
+	my $date   = $debt->{date};
+	my $amount = $debt->{amount};
+	my $desc   = $debt->{desc};
+	
+	my $query = $dbh->prepare_cached('INSERT INTO credits ' .
+					 '(fromid, toid, amount, ' .
+					 'description, date) ' .
+					 'VALUES (?,?,?,?,?)');
+	$query->execute($from, $uid, $amount, $desc, $date)
+	    or die $dib->errstr;
+	print "{\"success\": \"true\"}";
+    }
+
 }
 
 $dbh->disconnect;
