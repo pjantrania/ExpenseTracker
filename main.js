@@ -149,10 +149,10 @@ function updateSummary() {
 		var litext;
 		if ( price > 0 )
 		  litext = "<li>You owe " + item.name +
-		    " $" + price.toFixed(2) + ". <a href=\"#\" onclick=\"settle("+item.name+"); return false;\">Settle</a></li>";
+		    " $" + price.toFixed(2) + ".</li>";
 		else if ( price < 0 )
 		  litext = "<li>" + item.name + " owes you " +
-		    "$" + Math.abs(price).toFixed(2) + ".</li>";
+		    "$" + Math.abs(price).toFixed(2) + ". <a href=\"#\" onclick=\"settle("+item.name+"); return false;\">Settle</a></li>";
 		else
 		  litext = "<li>You and " + item.name +
 		    " are square.</li>";
