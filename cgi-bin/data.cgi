@@ -111,17 +111,17 @@ if ( $action eq "" ) {
     my $data = param() ? param('data') : '';
     if ( $data ne '' ) {
 	my $credit = decode_json($data);
-	my $from   = $debt->{fromid};
-	my $date   = $debt->{date};
-	my $amount = $debt->{amount};
-	my $desc   = $debt->{desc};
+	my $from   = $credit->{fromid};
+	my $date   = $credit->{date};
+	my $amount = $credit->{amount};
+	my $desc   = $credit->{desc};
 	
 	my $query = $dbh->prepare_cached('INSERT INTO credits ' .
 					 '(fromid, toid, amount, ' .
 					 'description, date) ' .
 					 'VALUES (?,?,?,?,?)');
 	$query->execute($from, $uid, $amount, $desc, $date)
-	    or die $dib->errstr;
+	    or die $dbh->errstr;
 	print "{\"success\": \"true\"}";
     }
 
